@@ -1,8 +1,8 @@
 A small simple sample of classes for fetching content from Twitter, Flickr, Youtube and Vimeo.
 
 ## Usage Twitter
-    $twitter = new Twitter("search_string");            
-    $tweets = $twitter->getTweets(3);
+    $twitter = new Twitter();            
+    $tweets = $twitter->getSearch("search_string", 3);
     
 ## Usage Flickr
     $flickr = new FlickrImages("http://flickr.rss.url");                

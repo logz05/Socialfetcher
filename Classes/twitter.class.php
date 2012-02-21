@@ -17,13 +17,8 @@
 */
 class Twitter
 {
-	private $xml;
-
-	public function __construct( $q )
-    {
-        $this->searchURL = 'http://search.twitter.com/search.atom?lang=en&q=';
-		$this->xml = simplexml_load_file( $this->searchURL . urlencode($q) );
-        
+	public function __construct()
+    {   
         $this->realNamePattern = '/\((.*?)\)/';
         $this->intervalNames = array('second', 'minute', 'hour', 'day', 'week', 'month', 'year');
         $this->intervalSeconds = array( 1, 60, 3600, 86400, 604800, 2630880, 31570560);        
@@ -50,11 +45,14 @@ class Twitter
 		}                
     }
     
-	public function getSearch($limit=15)
+	public function getSearch($query, $limit=15)
     {
+        $searchurl = 'http://search.twitter.com/search.atom?lang=en&q=' .  urlencode($query);
+        $xml = simplexml_load_file($searchurl);
+        
 		$tweets = array();
         $counter = 0;
-		foreach( $this->xml->entry as $item )
+		foreach( $xml->entry as $item )
         {
             if( $counter < $limit):
                 preg_match($this->realNamePattern, $item->author->name, $matches);

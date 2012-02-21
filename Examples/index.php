@@ -12,8 +12,8 @@ require_once("../Classes/vimeo.class.php");
         <h2>Twitter</h2>
         <div class="twitter">
             <?php
-                $twitter = new Twitter("#wpse");            
-                $tweets = $twitter->getSearch(3);
+                $twitter = new Twitter();            
+                $tweets = $twitter->getSearch("#wpse", 3);
                 /* @var $tweet Tweet */
                 foreach($tweets as $tweet):
                 ?>
