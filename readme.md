@@ -5,7 +5,7 @@ A small simple sample of classes for fetching content from Twitter, Flickr, Yout
     $tweets = $twitter->getTweets(3);
     
 ## Usage Flickr
-    $flickr = new FlickrImages("http://twitter.rss.url");                
+    $flickr = new FlickrImages("http://flickr.rss.url");                
     $images = $flickr->getImages(3);
     
 ## Usage Youtube
