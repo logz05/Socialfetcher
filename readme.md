@@ -2,7 +2,8 @@ A small simple sample of classes for fetching content from Twitter, Flickr, Yout
 
 ## Usage Twitter
     $twitter = new Twitter();            
-    $tweets = $twitter->getSearch("search_string", 3);
+    $tweets_from_search = $twitter->getSearch("search_string", 3);
+    $tweets_from_user = $twitter->getUser("username");
     
 ## Usage Flickr
     $flickr = new FlickrImages("http://flickr.rss.url");                
@@ -10,11 +11,15 @@ A small simple sample of classes for fetching content from Twitter, Flickr, Yout
     
 ## Usage Youtube
     $youtube = new Youtube();
-    $videos = $youtube->getVideos("username", 1, 3);
+    $videos_from_user = $youtube->getVideos("username", 1, 3);
+    $favorites_from_user = $youtube->getFavorites("username");
+    $videos_from_search = $youtube->search("search_string");
     
 ## Usage Vimeo
     $vimeo = new vimeo();
-    $arr = $vimeo->getVideos("username", 3);
+    $videos_from_user = $vimeo->getVideos("username", 3);
+    $albums_for_user = $vimeo->getAlbums("username");
+    $videos_from_album = $vimeo->getVideosFromAlbum("album_id");
     
 For further usage, check the example or the code itself.
 
