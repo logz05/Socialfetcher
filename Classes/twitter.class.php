@@ -29,7 +29,28 @@ class Twitter
         $this->intervalSeconds = array( 1, 60, 3600, 86400, 604800, 2630880, 31570560);        
 	}
 
-	public function getTweets($limit=15)
+    public function getUser($username, $limit = 10)
+    {
+        $jsonurl = "http://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&screen_name=" . $username;
+        $jsonobject = json_decode(file_get_contents($jsonurl));
+        $tweets = array();        
+        $counter = 0;
+		foreach( $jsonobject as $item )
+        {            
+            if( $counter < $limit):    
+                $t = new Tweet();
+                $t->author_name = $item->user->name;
+                $t->author_image = $item->user->profile_image_url;
+                $t->tweet = str_replace('<a href=', '<a target="_blank" href=', $item->text);
+                $t->timestamp = $this->getTime($item->created_at);
+
+                array_push($tweets, $t);
+                $counter++;
+            endif;
+		}                
+    }
+    
+	public function getSearch($limit=15)
     {
 		$tweets = array();
         $counter = 0;

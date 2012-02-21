@@ -13,7 +13,7 @@ require_once("../Classes/vimeo.class.php");
         <div class="twitter">
             <?php
                 $twitter = new Twitter("#wpse");            
-                $tweets = $twitter->getTweets(3);
+                $tweets = $twitter->getSearch(3);
                 /* @var $tweet Tweet */
                 foreach($tweets as $tweet):
                 ?>
