@@ -42,7 +42,9 @@ class Twitter
                 array_push($tweets, $t);
                 $counter++;
             endif;
-		}                
+		}
+		
+		return $tweets;
     }
     
 	public function getSearch($query, $limit=15)
